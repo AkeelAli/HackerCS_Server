@@ -1,22 +1,40 @@
-<h1>Modules in {{stream.stream_title}}</h1>
+{% extends "base.html" %}
+{% block title %}Modules{% endblock %}
+{% block content_title %}Select a Video{% endblock %}
+
+{% block breadcrumbs %}
+	<a href="/">Streams</a> >> <a href="">Modules</a>
+{% endblock %}
+
+{% block content %}
 {% if associations_list %}
-	<ol>
+	
 	{% for association in associations_list %}
 		{% with module=association.association_module_id  %}
-			<p>
-			<li>{{ module }}</li>
-			Description: {{module.module_description}}
-			<ol>
-				{% for video in module.video_set.all %}
-					<li><a href="../../{{video.pk}}">Part {{video.video_part}}</a> [{{video.video_type}}, Length= ]</li>
-				{%endfor%}
-			</ol>
-			</p>
+			
+			<div class="item">
+				<div class="name">{{ module }}</div>
+				<div class="meta">
+					<div class="description">
+						{{module.module_description}}
+					</div>
+				</div>
+			
+				<div class="video_list">
+					<ul>
+					{% for video in module.video_set.all %}
+						<li><a href="../../{{video.pk}}">Part {{video.video_part}}/{{video.module_id.video_count}}</a> <div class="video_meta">[{{video.video_type}}, Length= ]</div></li>
+					{%endfor%}
+					</ul>
+				</div>
+			</div>
+		
 		{% endwith %}
 	{% endfor %}
-	</ol>
+	
 {% else %}
-	There are no modules in this stream
+	<div id="flash_notice">There are no modules in this stream</div>
 {% endif %}
 
-<a href="../../">Go Back</a>
+{% endblock %}
+

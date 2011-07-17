@@ -1,15 +1,38 @@
-<h1>Select a Stream</h1>
+{% extends "base.html" %}
+
+{% block title %}Streams{% endblock %}
+
+{% block content_title %}Select a Stream{% endblock %}
+
+{% block breadcrumbs %}
+	<a href="/">Streams</a>
+{% endblock %}
+
+{% block content %}
+
 {% if streams_list %}
-	<ul>
+	
 	{% for stream in streams_list %}
-		<li><a href="streams/{{stream.pk}}">{{stream.stream_title}}</a></li>
-		<ul>
-			<li>{{stream.description}}</li>
-			<li>Total Modules: {{stream.module_count}}</li>
-			<li>Total Length: </li>
-		</ul>		
+		<div class="item">
+			<div class="name">
+				<a href="streams/{{stream.pk}}">{{stream.stream_title}}</a>
+			</div>
+			<div class="meta">
+				<div class="description">
+					{{stream.stream_description}}
+				</div>
+				<div class="attributes">
+					<ul>
+						<li><span class="attr_name">Total Modules:</span> {{stream.module_count}}</li>
+						<li><span class="attr_name">Total Length:</span> </li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	{%endfor%}
-	</ul>
+	
 {% else %}
-	<p>No streams are available</p>
+	<div id="flash_notice">No streams are available</div>
 {% endif %}
+
+{% endblock %}

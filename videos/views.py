@@ -20,9 +20,22 @@ def stream_detail(request,stream_id):
 def detail(request,video_id):
 	try:
 		video=Video.objects.get(pk=video_id)
-		back=request.META['HTTP_REFERER']
 	except Video.DoesNotExist:
 		raise Http404
+	
+	back=video.module_id.association_set.all()[0].association_stream_id.pk
+	
+	if (video.module_id.video_count>video.video_part):
+		try:
+			next_video=Video.objects.get(module_id=video.module_id,video_part=(video.video_part)+1).pk
+		except Video.DoesNotExist:
+			pass
+	if (video.video_part>1):
+		try:
+			previous_video=Video.objects.get(module_id=video.module_id, video_part=(video.video_part)-1).pk
+		except Video.DoesNotExist:	
+			pass
+
 	return render_to_response('videos/detail.html',locals(), context_instance=RequestContext(request))
 
 

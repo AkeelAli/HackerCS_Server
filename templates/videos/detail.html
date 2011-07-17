@@ -1,13 +1,27 @@
-<h1>{{video.module_title_part}}</h1>
+{% extends "base.html" %}
 
+{% block title %}{{video.module_title_part}}{% endblock %}
+{% block content_title %}{{video.module_title_part}}{% endblock %}
+
+{% block breadcrumbs %}
+	<a href="/">Streams</a> >> <a href="/videos/streams/{{back}}">Modules</a> >> <a href="">Video</a>
+{% endblock %}
+
+
+{% block content %}
 {% if error_message %}
-	<p><strong>{{ error_message }}</strong></p>
+	<div id="flash_notice">{{ error_message }}</div>
+
+{% else %}
+
+<div id="video_iframe">
+	<iframe width="560" height="349" src="http://www.youtube.com/embed/{{video.video_youtube_id}}" frameborder="0" allowfullscreen></iframe>
+</div>
+<div id="video_navigation">
+	{% if previous_video %}  <a href="/videos/{{previous_video}}">Prev</a>{% endif %}
+	{% if next_video %} <a href="/videos/{{next_video}}">Next</a>{% endif %}
+</div>
 {% endif %}
 
-<p>
 
-<iframe width="560" height="349" src="http://www.youtube.com/embed/{{video.video_youtube_id}}" frameborder="0" allowfullscreen></iframe>
-
-</p>
-
-<a href="{{ back }}">Go Back</a>
+{% endblock %}

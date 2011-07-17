@@ -40,6 +40,9 @@ class Module(models.Model):
 	def __unicode__(self):
 		return self.module_title
 
+	def video_count(self):
+		return len(self.video_set.all())
+
 	def stream_titles(self):
 		stream_titles=[]
 		for association in self.association_set.all():
