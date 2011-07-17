@@ -1,0 +1,13 @@
+<h1>{{video.module_title_part}}</h1>
+
+{% if error_message %}
+	<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<p>
+
+<iframe width="560" height="349" src="http://www.youtube.com/embed/{{video.video_youtube_id}}" frameborder="0" allowfullscreen></iframe>
+
+</p>
+
+<a href="{{ back }}">Go Back</a>

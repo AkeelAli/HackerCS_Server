@@ -1,0 +1,22 @@
+<h1>Modules in {{stream.stream_title}}</h1>
+{% if associations_list %}
+	<ol>
+	{% for association in associations_list %}
+		{% with module=association.association_module_id  %}
+			<p>
+			<li>{{ module }}</li>
+			Description: {{module.module_description}}
+			<ol>
+				{% for video in module.video_set.all %}
+					<li><a href="../../{{video.pk}}">Part {{video.video_part}}</a> [{{video.video_type}}, Length= ]</li>
+				{%endfor%}
+			</ol>
+			</p>
+		{% endwith %}
+	{% endfor %}
+	</ol>
+{% else %}
+	There are no modules in this stream
+{% endif %}
+
+<a href="../../">Go Back</a>

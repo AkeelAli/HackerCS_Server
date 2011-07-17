@@ -1,0 +1,15 @@
+<h1>Select a Stream</h1>
+{% if streams_list %}
+	<ul>
+	{% for stream in streams_list %}
+		<li><a href="streams/{{stream.pk}}">{{stream.stream_title}}</a></li>
+		<ul>
+			<li>{{stream.description}}</li>
+			<li>Total Modules: {{stream.module_count}}</li>
+			<li>Total Length: </li>
+		</ul>		
+	{%endfor%}
+	</ul>
+{% else %}
+	<p>No streams are available</p>
+{% endif %}
