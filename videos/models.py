@@ -71,11 +71,11 @@ class Video(models.Model):
 	video_length=models.CharField(max_length=10, blank=True, null=True)
 
 	def __unicode__(self):
-		return "%s" % self.module_id.module_title + " ("+str(self.video_part)+")"
+		return "%s" % self.module_id.module_title + " ("+str(self.video_part)+"/"+str(len(self.module_id.video_set.all()))+")"
 
 	def module_title_part(self):
-		return "%s" % self.module_id.module_title + " ("+str(self.video_part)+")"
-
+		return "%s" % self.module_id.module_title + " ("+str(self.video_part)+"/"+str(len(self.module_id.video_set.all()))+")"
+	
 	def video_youtube_id(self):
 		import re
 		match=re.search("v=(.*)$",self.video_url)
