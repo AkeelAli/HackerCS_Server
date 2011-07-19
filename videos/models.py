@@ -66,6 +66,7 @@ class Video(models.Model):
 	video_url=models.CharField(max_length=200)
 	video_title=models.CharField(max_length=200, blank=True)
 	video_part=models.IntegerField()
+	video_length=models.CharField(max_length=10, blank=True, null=True)
 
 	def __unicode__(self):
 		return "%s" % self.module_id.module_title + " ("+str(self.video_part)+")"
