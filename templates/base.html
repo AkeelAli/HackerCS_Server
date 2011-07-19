@@ -1,6 +1,11 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
 	<link href="/media/videos/stylesheet.css" rel="stylesheet" type="text/css" />
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+	{% block script %}{% endblock %}
+	
 	<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-24599160-1']);
@@ -40,5 +45,13 @@
 	<div id="footer">
 	
 	</div>
+<script type="text/javascript">
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/0De0c2RkERFxVvZD7Wp8Gg.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script>
 </body>
 </html>

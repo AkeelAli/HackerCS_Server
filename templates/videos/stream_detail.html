@@ -1,4 +1,19 @@
 {% extends "base.html" %}
+
+{% block script %}
+	<script>
+		$(document).ready(function(){
+			
+			$(".toggle_container").hide();
+		 
+			$(".name").click(function(){
+				$(this).toggleClass("active").next().slideToggle();
+			});
+		 
+		});
+	</script>
+{% endblock %}
+
 {% block title %}Modules{% endblock %}
 {% block content_title %}Select a Video{% endblock %}
 
@@ -8,30 +23,35 @@
 
 {% block content %}
 {% if associations_list %}
-	
+	<ol>
 	{% for association in associations_list %}
 		{% with module=association.association_module_id  %}
 			
 			<div class="item">
-				<div class="name">{{ module }}</div>
-				<div class="meta">
-					<div class="description">
-						{{module.module_description}}
+				<div class="name"><li>{{ module }}</li></div>
+
+				<div class="toggle_container">
+					<div class="meta">
+						<div class="description">
+							{{module.module_description}}
+						</div>
 					</div>
-				</div>
+				
+					<div class="video_list">
+						<ul>
+						{% for video in module.video_set.all %}
+							<li><a href="../../{{video.pk}}">Part {{video.video_part}}/{{video.module_id.video_count}}</a> <div class="video_meta">[{{video.video_type}}, Length= ]</div></li>
+						{%endfor%}
+						</ul>
+					</div>
 			
-				<div class="video_list">
-					<ul>
-					{% for video in module.video_set.all %}
-						<li><a href="../../{{video.pk}}">Part {{video.video_part}}/{{video.module_id.video_count}}</a> <div class="video_meta">[{{video.video_type}}, Length= ]</div></li>
-					{%endfor%}
-					</ul>
 				</div>
+
 			</div>
 		
 		{% endwith %}
 	{% endfor %}
-	
+	</ol>
 {% else %}
 	<div id="flash_notice">There are no modules in this stream</div>
 {% endif %}
