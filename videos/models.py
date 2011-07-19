@@ -1,4 +1,5 @@
 from django.db import models
+import re
 
 class Tag(models.Model):
 	tag_title=models.CharField(max_length=200)
@@ -15,7 +16,8 @@ class Type(models.Model):
 class Stream(models.Model):
 	stream_title=models.CharField(max_length=200)
 	stream_description=models.TextField(null=True, blank=True)
-
+	stream_length=models.CharField(max_length=10, null=True, blank=True)
+	
 	def __unicode__(self):
 		return self.stream_title
 	
