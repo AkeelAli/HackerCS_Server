@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from videos.models import Stream, Video, Association
+from videos.models import Stream, Video, Association, Module
 from django.http import Http404
 
 #send info about request object to template so it can use csrf token
@@ -46,4 +46,16 @@ def detail(request,video_id):
 
 	return render_to_response('videos/detail.html',locals(), context_instance=RequestContext(request))
 
-
+def search(request):
+	from helpers import get_query
+	
+	query_string = ''
+	found_entries = None
+	if ('q' in request.GET) and request.GET['q'].strip():
+		query_string = request.GET['q']
+		entry_query = get_query(query_string, ['module_title', 'module_description',])
+        
+	
+	found_entries = Module.objects.filter(entry_query)
+	
+	return render_to_response('videos/search_results.html', { 'query_string': query_string, 'found_entries': found_entries }, context_instance=RequestContext(request))
