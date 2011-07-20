@@ -84,6 +84,21 @@ class Video(models.Model):
 		else:
 			return ''
 
+	def next_video_in_stream(self):
+		module=self.module_id
+		#even though for loop, current assumptions is that there is only 1 association per module
+		for association in module.association_set.all():
+			stream=association.association_stream_id
+			stream_parts=stream.module_count()
+			module_part=association.association_part
+			if (module_part<stream_parts):
+				l=[stream,module_part+1]
+				return l
+			else:
+				return False
+		
+		return False
+		
 	def video_tags(self):
 		tags=[]
 		for tag in self.video_tag.all():
