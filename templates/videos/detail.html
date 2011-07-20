@@ -15,13 +15,17 @@
 {% else %}
 
 <div id="video_iframe">
-	<iframe width="560" height="349" src="http://www.youtube.com/embed/{{video.video_youtube_id}}" frameborder="0" allowfullscreen></iframe>
+	<iframe width="853" height="510" src="http://www.youtube.com/embed/{{video.video_youtube_id}}" frameborder="0" allowfullscreen></iframe>
 </div>
 <div id="video_navigation">
 	{% if previous_video %}  <a href="/videos/{{previous_video}}">Prev</a>{% endif %}
 	{% if next_video %} <a href="/videos/{{next_video}}">Next</a>{% endif %}
+	<br />
+	<br />
 </div>
+
 {% endif %}
 
 
 {% endblock %}
+
