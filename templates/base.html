@@ -19,44 +19,65 @@
 	</script>
 </head>
 <body>
-	<div id="header">
-		<div id="header_content">
-			<div id="nav_menu_buttons"> 
-				<div class="button-group">
-					<!--<a href="/videos/top">Top videos</a>--> 
-					<!--<a href="/videos/new">New videos</a> -->
-				</div>
+	<div id="header_main_wrapper">
+		<div id="header">
+			<div id="header_content">
+				<div id="nav_menu_buttons"> 
+					<div class="button-group">
+						<!--<a href="/videos/top">Top videos</a>--> 
+						<!--<a href="/videos/new">New videos</a> -->
+					</div>
+				</div> 
+				
+				<div id="search_wrapper"> 
+					<form action="/videos/search" id="search_form" method="get">
+						<input id="search_box" name="q" type="text" /> 
+						<input id="search_button" type="submit" value="search"></input> 
+					</form> 
+				</div>  
+			</div>
+		</div>
+		
+		<div id="content_title">
+			<h1>{% block content_title %}{%endblock%}</h1>
+		</div>
+		
+		<div id="main">
+			
+			
+			<div id="breadcrumbs">
+				{% block breadcrumbs %}{% endblock %}
+			</div>
+		
+		
+			<div id="content">
+				{% block content %}{% endblock %}
+			</div>
+			
+		</div>
+		
+		<div id="push"></div>
+	</div>
+	<div id="footer"> 
+		<div id="footer_content">
+			<div id="what"> 
+				<p>Hacker CS is a <b>free</b> online database of Computer Science video tutorials.</p> 
+				
+				<!--<p>Read the <a href="">story of HackerCS</a></p> -->
+			</div> 
+			<div id="footerimage"> 
+				<a href=""><img alt="" src="http://www.iit.edu/csl/news/images/computer_science.jpg" /></a> 
+			</div>
+			<div id="goal"> 
+				<p>The goal of Hacker CS is to become the Khan Academy of Computer Science.</b></p> 
+				
+				<!--<p>If you think this is a worthy goal, see how you can <a href="">contribute to Hacker CS.</a> </p> -->
 			</div> 
 			
-			<div id="search_wrapper"> 
-				<form action="/videos/search" id="search_form" method="get">
-					<input id="search_box" name="q" type="text" /> 
-					<input id="search_button" type="submit" value="search"></input> 
-				</form> 
-			</div>  
+			<div id="support"> 
+				If you think this is a worthy cause, see how you can contribute to Hacker CS.
+			</div>
 		</div>
-	</div>
-	
-	<div id="content_title">
-		<h1>{% block content_title %}{%endblock%}</h1>
-	</div>
-	
-	<div id="main">
-		
-		
-		<div id="breadcrumbs">
-			{% block breadcrumbs %}{% endblock %}
-		</div>
-	
-	
-		<div id="content">
-			{% block content %}{% endblock %}
-		</div>
-		
-	</div>
-	
-	<div id="footer">
-		{% block footer %}{% endblock %}
 	</div>
 <script type="text/javascript">
   var uvOptions = {};

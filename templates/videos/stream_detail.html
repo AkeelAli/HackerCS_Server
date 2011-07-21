@@ -27,8 +27,8 @@
 	{% for association in associations_list %}
 		{% with module=association.association_module_id  %}
 			
-			<div class="item">
-				<div class="name"><li>{{ module }}</li></div>
+			<div class="item module">
+				<div class="name"><li><a href="" onclick="return false;">{{ module }}</a></li></div>
 
 				<div class="toggle_container">
 					<div class="meta">
