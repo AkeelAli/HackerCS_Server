@@ -1,2 +1,57 @@
-{{query_string}}
-{{found_entries}}
+{% extends "base.html" %}
+
+{% block script %}
+	<script>
+		$(document).ready(function(){
+			
+			$(".toggle_container").hide();
+		 
+			$(".name").click(function(){
+				$(this).toggleClass("active").next().slideToggle();
+			});
+		 
+		});
+	</script>
+{% endblock %}
+
+{% block title %}Search Results{% endblock %}
+{% block content_title %}Search Results{% endblock %}
+
+{% block breadcrumbs %}
+	<a href="/">Streams</a> >> <a href="">Modules</a>
+{% endblock %}
+
+{% block content %}
+{% if found_entries %}
+	<ul>
+	{% for module in found_entries %}
+			
+			<div class="item">
+				<div class="name"><li>{{ module }}</li></div>
+
+				<div class="toggle_container">
+					<div class="meta">
+						<div class="description">
+							{{module.module_description}}
+						</div>
+					</div>
+				
+					<div class="video_list">
+						<ul>
+						{% for video in module.video_set.all %}
+							<li><a href="/videos/{{video.pk}}">Part {{video.video_part}}/{{video.module_id.video_count}}</a> <div class="video_meta">[{{video.video_type}}, {{video.video_length}}]</div></li>
+						{%endfor%}
+						</ul>
+					</div>
+			
+				</div>
+
+			</div>
+		
+	{% endfor %}
+	</ul>
+{% else %}
+	<div id="flash_notice">{{query_string}} did not return any results.</div>
+{% endif %}
+
+{% endblock %}
