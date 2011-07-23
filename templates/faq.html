@@ -25,11 +25,14 @@
 {% if faq_list %}
 	<ol>
 	{% for faq in faq_list %}
-			
 			<div class="item">
 				<div class="name"><li><a href="" onclick="return false;">{{ faq.faq_question }}</a></li></div>
 
+			{% if key == faq.pk %}
+				<div class="toggle_container_shown">	
+			{% else  %}	
 				<div class="toggle_container">
+			{% endif %}
 					<div class="meta">
 						<div class="description answer">
 							{{faq.faq_answer|safe}}
@@ -39,7 +42,6 @@
 				</div>
 
 			</div>
-		
 	{% endfor %}
 	</ol>
 {% else %}
