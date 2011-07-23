@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block script %}
+	<script>
+		$(document).ready(function(){
+			
+			$(".toggle_container").hide();
+		 
+			$(".name").click(function(){
+				$(this).toggleClass("active").next().slideToggle();
+			});
+		 
+		});
+	</script>
+{% endblock %}
+
+{% block title %}Help & Faq{% endblock %}
+{% block content_title %}Help & Faq{% endblock %}
+
+{% block breadcrumbs %}
+	<a href="/">Home</a> >> Help & Faq
+{% endblock %}
+
+{% block content %}
+{% if faq_list %}
+	<ol>
+	{% for faq in faq_list %}
+			
+			<div class="item">
+				<div class="name"><li><a href="" onclick="return false;">{{ faq.faq_question }}</a></li></div>
+
+				<div class="toggle_container">
+					<div class="meta">
+						<div class="description answer">
+							{{faq.faq_answer|safe}}
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		
+	{% endfor %}
+	</ol>
+{% else %}
+	<div id="flash_notice">There was a problem displaying the faqs.</div>
+{% endif %}
+
+{% endblock %}

@@ -104,4 +104,11 @@ class Video(models.Model):
 		for tag in self.video_tag.all():
 			tags.append(tag.tag_title)
 		return ', '.join(tags)
+		
+class Faq(models.Model):
+	faq_question=models.CharField(max_length=200)
+	faq_answer=models.TextField(null=True, blank=True)
+	faq_order=models.IntegerField()
 
+	def __unicode__(self):
+		return self.faq_question
