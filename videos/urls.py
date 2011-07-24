@@ -9,4 +9,7 @@ urlpatterns = patterns('videos.views',
 		url(r'^(?P<video_id>\d+)/$','detail'),
 		url(r'^streams/(?P<stream_id>\d+)/$','stream_detail'),
 		url(r'^search/$','search'),
+		url(r'^top/$','top'),
+		url(r'^popular/$','popular'),
+		url(r'^new/$','new'),
 )

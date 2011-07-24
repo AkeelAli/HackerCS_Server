@@ -57,3 +57,62 @@ def search(request):
 		found_entries = Module.objects.filter(entry_query)
 	
 	return render_to_response('videos/search_results.html', { 'query_string': query_string, 'found_entries': found_entries }, context_instance=RequestContext(request))
+
+def top(request):
+	entries=[]
+	
+	for module in Module.objects.all():
+		if (module.module_rating):
+			#score=float(module.module_rating)*int(module.module_raters)*len(module.video_set.all())/(int(module.module_views))
+			score=float(module.module_rating)*int(module.module_raters)
+			entries.append((module,score))
+	
+	if (entries):
+		from operator import itemgetter
+		entries=sorted(entries,key=itemgetter(1), reverse=True)
+		
+	modules=[]	
+	for module_tuple in entries:
+		modules.append(module_tuple[0])
+	
+	modules=modules[:10]
+	
+	return render_to_response('videos/top.html', { 'modules': modules }, context_instance=RequestContext(request))
+	
+def popular(request):
+	entries=[]
+	
+	for module in Module.objects.all():
+		views=int(module.module_views)
+		entries.append((module,views))
+	
+	if (entries):
+		from operator import itemgetter
+		entries=sorted(entries,key=itemgetter(1), reverse=True)
+		
+	modules=[]	
+	for module_tuple in entries:
+		modules.append(module_tuple[0])
+	
+	modules=modules[:10]
+	
+	return render_to_response('videos/popular.html', { 'modules': modules }, context_instance=RequestContext(request))
+
+def new(request):
+	entries=[]
+	
+	for module in Module.objects.all():
+		published=module.module_published
+		entries.append((module,published))
+	
+	if (entries):
+		from operator import itemgetter
+		entries=sorted(entries,key=itemgetter(1), reverse=True)
+		
+	modules=[]	
+	for module_tuple in entries:
+		modules.append(module_tuple[0])
+	
+	modules=modules[:10]
+	
+	return render_to_response('videos/new.html', { 'modules': modules }, context_instance=RequestContext(request))
