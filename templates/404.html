@@ -1,1 +1,16 @@
-404 Error
+{% extends "base.html" %}
+
+{% block title %}Hacker CS - Page Not Found{% endblock %}
+
+{% block content_title %}Page Not Found{% endblock %}
+
+{% block breadcrumbs %}
+	<a href="/">Home</a> >> 404
+{% endblock %}
+
+{% block content %}
+
+	<div id="flash_notice">This page does not exist. Check our <a href="/faq/">faqs</a> if you are having a problem.</div>
+
+
+{% endblock %}
