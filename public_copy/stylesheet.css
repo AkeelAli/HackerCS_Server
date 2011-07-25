@@ -1,0 +1,249 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em,
+img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figure, figcaption, hgroup,
+menu, footer, header, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+article, aside, canvas, figure, figure img, figcaption, hgroup,
+footer, header, nav, section, audio, video {
+  display: block;
+}
+
+a img {
+  border: 0;
+}
+
+.gigantic {
+  font-size: 110px;
+  line-height: 120px;
+  letter-spacing: -2px;
+}
+
+.huge {
+  font-size: 68px;
+  line-height: 72px;
+  letter-spacing: -1px;
+}
+
+.large, h1 {
+  font-size: 48px;
+  line-height: 48px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.bigger, h2 {
+  font-size: 26px;
+  line-height: 36px;
+}
+
+.big, h3, h4 {
+  font-size: 22px;
+  line-height: 30px;
+}
+
+
+
+h3 {
+  font-style: italic;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgb(255,255,158);
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: rgb(255,255,158);
+}
+
+::-moz-selection {
+  background: rgb(255,255,158);
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+/* default links */
+a:link{color: red; text-decoration: none;}
+a:visited{color: red;}
+a:active{color: red;}
+a:hover{color: red;background: rgb(255,255,158);}
+
+#main {
+	margin: auto;
+	width: 600px;
+}
+
+/* header */
+
+#header{
+	clear: both;
+	background: #f2f2f2;
+	overflow: hidden;
+	height: 36px;
+}
+#header #header_content{
+	width: 750px;
+	margin: auto;
+
+}
+#header #header_content #home_logo img{
+  display: none;
+  float: left;
+  margin: 1px 50px 2px 0;
+  width:34px;
+  height:34px;
+}
+
+#header #header_content #nav_menu_buttons {
+  float: left;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+#header #header_content #nav_menu_buttons a{margin-right: 20px;}
+
+#header #header_content #search_wrapper {
+  float: right;
+}
+#header #header_content #search_wrapper form {
+  
+}
+#header #header_content #search_wrapper #search_box {
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+#header #header_content #search_wrapper #search_button {
+  padding: 2px 2px 2px 2px;
+  margin-top: 5px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* -------------- */
+/* footer */
+
+/* setting up sticky footer using a push area */
+	html, body {
+		height: 100%;
+	}
+
+	#header_main_wrapper{
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+		margin: 0 auto -250px; /* the bottom margin is the negative value of the footer's height (including padding/margin) */
+	}
+
+	#footer, #push{
+		height: 250px;	
+	}
+	
+
+#footer{
+	/* sum below makes up height of footer */
+	margin-top:30px;
+	height: 220px;
+	
+	clear: both;
+	position: relative;
+	background: #f2f2f2;
+}
+
+#footer_content {
+  font-size: 15px;
+  width: 896px;
+  padding: 72px 48px 84px;
+  padding: 24px 0 24px 0;
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#footer #what {
+  width: 344px;
+  margin-right: 24px;
+  float: left;
+}
+#footer #goal {
+  width: 344px;
+  float: left;
+}
+#footer #what, #footer #goal {
+  padding-top: 48px;
+}
+#footer #footerimage {
+  width: 160px;
+  margin-right: 24px;
+  float: left;
+}
+#footer #support{
+  clear: both;
+  padding-top:30px;
+  text-align: center;
+}
+#footer p {
+  margin-bottom: 24px;
+}
+
+/* --------------- */
+
+
+#main #breadcrumbs{
+	font-size: 10px;
+	margin-bottom: 30px;
+}
+
+#main .item .name{
+	margin-top: 20px;
+	margin-bottom: 5px;
+	display: block;
+	text-decoration: underline;
+}
+
+#main .meta {
+	font-size: 10px;
+}
+
+#main .meta .description{ font-size: 13px; width: 450px; margin-bottom:5px;}
+
+#main .meta .attributes ul{}
+#main .meta .attributes ul li{display: inline;}
+
+#main .meta .attributes{}
+
+#main .meta .attributes .attr_name{text-decoration: underline; }
+
+/* stream_detail */
+
+#main .item .video_list ul{margin-left: 30px; font-size: 12px;}
+#main .item .video_meta {display: inline; font-style: italic;}
+
+#main .module .name a{color: black;}
+#main .module .name a:link{color: black;}
+#main .module .name a:visited{color: black;}
+#main .module .name a:active{color: black;}
+#main .module .name a:hover{color: black; background: rgb(255,255,158);}
+
+/* video detail */
+#main #video_iframe{margin-left:-120px;}
+#main #video_navigation{text-align: center; margin:auto; margin-top:30px;}
+#video_title{font-size:30px;}
+
+/* faq */
+#main .meta .answer{  width: 500px; }
+#main .meta .answer p{  padding-top:10px;}
