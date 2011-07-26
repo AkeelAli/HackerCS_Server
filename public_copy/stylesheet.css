@@ -215,6 +215,10 @@ a:hover{color: red;background: rgb(255,255,158);}
 	text-decoration: underline;
 }
 
+#main .item .noVideo{
+	text-decoration: none;
+}
+
 #main .meta {
 	font-size: 10px;
 }

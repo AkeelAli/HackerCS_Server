@@ -27,9 +27,11 @@
 	{% for association in associations_list %}
 		{% with module=association.association_module_id  %}
 			
+			{% if module.video_set.all %}
+			
 			<div class="item module">
 				<div class="name"><li><a href="" onclick="return false;">{{ module }}</a></li></div>
-
+			
 				<div class="toggle_container">
 					<div class="meta">
 						<div class="description">
@@ -48,6 +50,11 @@
 				</div>
 
 			</div>
+			{% else %}
+				<div class="item module">
+					<div class="name noVideo"><li>{{ module }}</li></div>
+				</div>
+			{% endif %}
 		
 		{% endwith %}
 	{% endfor %}

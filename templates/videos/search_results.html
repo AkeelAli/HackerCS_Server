@@ -25,7 +25,8 @@
 {% if found_entries %}
 	<ul>
 	{% for module in found_entries %}
-			
+	
+	{% if module.video_set.all %}	
 			<div class="item module">
 				<div class="name"><li><a href="" onclick="return false;">{{ module }}</a></li></div>
 
@@ -47,8 +48,12 @@
 				</div>
 
 			</div>
-		
-	{% endfor %}
+	{% else %}
+		<div class="item module">
+			<div class="name noVideo"><li>{{ module }} [Coming Soon]</li></div>
+		</div>
+	{% endif %}
+	{%endfor%}
 	</ul>
 {% else %}
 	<div id="flash_notice">'{{query_string}}' did not return any results.</div>
