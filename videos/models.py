@@ -63,7 +63,7 @@ class Module(models.Model):
 class Association(models.Model):
 	association_stream_id=models.ForeignKey(Stream)
 	association_module_id=models.ForeignKey(Module)
-	association_part=models.IntegerField()
+	association_part=models.DecimalField(max_digits=5,decimal_places=2)
 
 	def __unicode__(self):
 		return "%s: %s (%d)" % (self.association_stream_id.stream_title, self.association_module_id.module_title, self.association_part)

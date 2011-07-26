@@ -21,7 +21,7 @@ def stream_detail(request,stream_url_friendly):
 		if (not stream):
 			raise Http404
 			
-		associations_list=stream.association_set.all()
+		associations_list=stream.association_set.all().order_by('association_part')
 	except Stream.DoesNotExist:
 		raise Http404
 	
