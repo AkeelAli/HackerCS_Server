@@ -83,8 +83,9 @@ def popular(request):
 	entries=[]
 	
 	for module in Module.objects.all():
-		views=int(module.module_views)
-		entries.append((module,views))
+		if (module.module_views):
+			views=int(module.module_views)
+			entries.append((module,views))
 	
 	if (entries):
 		from operator import itemgetter
