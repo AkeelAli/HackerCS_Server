@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{%block meta_description%}Hacker CS, Stream: {{stream}}, Modules: {{stream.module_count}}, Length: {{stream.stream_length}}{%endblock%}
 {% block script %}
 	<script>
 		$(document).ready(function(){
@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block title %}Hacker CS - {{stream}}{% endblock %}
-{% block content_title %}Select a Video{% endblock %}
+{% block content_title %}{{stream}}{% endblock %}
 
 {% block breadcrumbs %}
 	<a href="/">Home</a> >> Modules
