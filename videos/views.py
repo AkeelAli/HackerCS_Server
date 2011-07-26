@@ -19,7 +19,7 @@ def detail(request,video_url_friendly):
 	except Video.DoesNotExist:
 		raise Http404
 	
-	back=video.module_id.association_set.all()[0].association_stream_id.pk
+	back=video.module_id.association_set.all()[0].association_stream_id.url_friendly()
 	
 	next_video=False
 	
