@@ -64,6 +64,8 @@ class Association(models.Model):
 	def __unicode__(self):
 		return "%s: %s (%d)" % (self.association_stream_id.stream_title, self.association_module_id.module_title, self.association_part)
 
+
+		
 class Video(models.Model):
 	module_id=models.ForeignKey(Module)
 	video_type=models.ForeignKey(Type, null=True, blank=True)
@@ -81,6 +83,11 @@ class Video(models.Model):
 	def __unicode__(self):
 		return "%s" % self.module_id.module_title + " ("+str(self.video_part)+"/"+str(len(self.module_id.video_set.all()))+")"
 
+	def url_friendly(self):
+		import re
+		return "%s" % re.sub('\W+','-',self.module_id.module_title) + "-Part-"+str(self.video_part)
+		
+		
 	def module_title_part(self):
 		return "%s" % self.module_id.module_title + " ("+str(self.video_part)+"/"+str(len(self.module_id.video_set.all()))+")"
 	

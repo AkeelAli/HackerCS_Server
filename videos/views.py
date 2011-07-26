@@ -19,7 +19,15 @@ def stream_detail(request,stream_id):
 
 def detail(request,video_id):
 	try:
-		video=Video.objects.get(pk=video_id)
+		video=False
+		videos=Video.objects.all()
+		for v in videos:
+			if (v.url_friendly()==video_id):
+				video=v
+				break
+				
+		if (not video):
+			raise Http404
 	except Video.DoesNotExist:
 		raise Http404
 	
@@ -29,18 +37,18 @@ def detail(request,video_id):
 	
 	if (video.module_id.video_count>video.video_part):
 		try:
-			next_video=Video.objects.get(module_id=video.module_id,video_part=(video.video_part)+1).pk
+			next_video=Video.objects.get(module_id=video.module_id,video_part=(video.video_part)+1).url_friendly()
 		except Video.DoesNotExist:
 			pass
 	if not next_video:
 		stream_module=video.next_video_in_stream()
 		if (stream_module):
 			next_association=Association.objects.filter(association_stream_id=stream_module[0],association_part=stream_module[1])[0]
-			next_video=next_association.association_module_id.video_set.all()[0].pk
+			next_video=next_association.association_module_id.video_set.all()[0].url_friendly()
 				
 	if (video.video_part>1):
 		try:
-			previous_video=Video.objects.get(module_id=video.module_id, video_part=(video.video_part)-1).pk
+			previous_video=Video.objects.get(module_id=video.module_id, video_part=(video.video_part)-1).url_friendly()
 		except Video.DoesNotExist:	
 			pass
 
