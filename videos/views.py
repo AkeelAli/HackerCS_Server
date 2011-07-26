@@ -5,12 +5,12 @@ from django.http import Http404
 #send info about request object to template so it can use csrf token
 from django.template import RequestContext
 
-def detail(request,video_id):
+def detail(request,video_url_friendly):
 	try:
 		video=False
 		videos=Video.objects.all()
 		for v in videos:
-			if (v.url_friendly()==video_id):
+			if (v.url_friendly()==video_url_friendly):
 				video=v
 				break
 				

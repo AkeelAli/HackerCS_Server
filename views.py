@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from videos.models import Faq, Stream
+from django.http import Http404
 
 from django.template import RequestContext
 
@@ -8,12 +9,22 @@ def home(request):
 	streams_list=Stream.objects.all()
 	return render_to_response('videos/index.html',locals())
 
-def stream_detail(request,stream_id):
+def stream_detail(request,stream_url_friendly):
 	try:
-		stream=Stream.objects.get(pk=stream_id)
+		stream=False
+		streams=Stream.objects.all()
+		for s in streams:
+			if (s.url_friendly()==stream_url_friendly):
+				stream=s
+				break
+				
+		if (not stream):
+			raise Http404
+			
 		associations_list=stream.association_set.all()
 	except Stream.DoesNotExist:
 		raise Http404
+	
 	return render_to_response('videos/stream_detail.html',locals(),context_instance=RequestContext(request))
 	
 def faq(request):	

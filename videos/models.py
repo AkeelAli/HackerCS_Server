@@ -32,6 +32,10 @@ class Stream(models.Model):
 		return '<br /> '.join(module_titles)
 	module_titles.allow_tags=True
 
+	def url_friendly(self):
+		import re
+		return "%s" % re.sub('\W+','-',self.stream_title)
+	
 class Module(models.Model):
 	module_associations=models.ManyToManyField(Stream, through='Association')
 	module_prereqs=models.ManyToManyField("self", symmetrical=False, blank=True, null=True)

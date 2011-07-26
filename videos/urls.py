@@ -12,5 +12,5 @@ urlpatterns = patterns('videos.views',
 		url(r'^popular/$','popular'),
 		url(r'^new/$','new'),
 		#the following url must be at the end (otherwise risk matching with other words)
-		url(r'^(?P<video_id>[\w\-]+)/$','detail'),
+		url(r'^(?P<video_url_friendly>[\w\-]+)/$','detail'),
 )
