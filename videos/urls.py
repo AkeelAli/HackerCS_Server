@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('videos.views',
 		url(r'^$','index'),
-		url(r'^streams/(?P<stream_id>\d+)/$','stream_detail'),
+
 		url(r'^search/$','search'),
 		url(r'^top/$','top'),
 		url(r'^popular/$','popular'),
