@@ -245,6 +245,9 @@ a:hover{color: red;background: rgb(255,255,158);}
 
 /* video detail */
 #main #video_iframe{margin-left:-120px;}
+#main #video_description{font-style:italic; font-size: 12px; text-align: center; margin:auto; margin-top:30px;}
+#main #video_description fieldset{border: 1px solid grey;}
+#main #video_description legend{font-style:normal;}
 #main #video_navigation{text-align: center; margin:auto; margin-top:30px;}
 #video_title{font-size:30px;}
 
