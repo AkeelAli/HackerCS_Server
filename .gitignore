@@ -13,5 +13,4 @@ media/uploads
 tmp
 .DS_Store
 settings.py
-scripts/db/*
 beta

@@ -83,7 +83,8 @@ class Video(models.Model):
 	video_raters=models.CharField(max_length=15, blank=True, null=True)
 	video_views=models.CharField(max_length=15, blank=True, null=True)
 	video_published=models.CharField(max_length=50, blank=True, null=True)
-
+	video_description=models.TextField(null=True, blank=True)
+	
 	def __unicode__(self):
 		return "%s" % self.module_id.module_title + " ("+str(self.video_part)+"/"+str(len(self.module_id.video_set.all()))+")"
 
