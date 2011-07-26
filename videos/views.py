@@ -5,6 +5,10 @@ from django.http import Http404
 #send info about request object to template so it can use csrf token
 from django.template import RequestContext
 
+def index(request):
+	streams_list=Stream.objects.all()
+	return render_to_response('videos/index.html',locals())
+	
 def detail(request,video_url_friendly):
 	try:
 		video=False
