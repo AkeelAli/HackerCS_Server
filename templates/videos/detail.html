@@ -17,17 +17,36 @@
 <div id="video_iframe">
 	<iframe width="853" height="510" src="http://www.youtube.com/embed/{{video.video_youtube_id}}" frameborder="0" allowfullscreen></iframe>
 </div>
-<div id="video_description">
-	<fieldset>
-	<legend>Youtube Notes</legend>
-		{{video.video_description|linebreaksbr|urlize}}
-	</fieldset>
-</div>
+
 <div id="video_navigation">
 	{% if previous_video %}  <a href="/videos/{{previous_video}}">Prev</a>{% endif %}
 	{% if next_video %} <a href="/videos/{{next_video}}">Next</a>{% endif %}
 </div>
+<div id="video_description">
+<fieldset>
+<legend>Video Details</legend>
+<div id="fielset_content">
+	<div id="youtube_details">
 
+			<div id="title">Youtube Description</div>
+			{{video.video_description|urlize|linebreaksbr}}
+
+	</div>
+	<div id="video_list">
+		<div id="title">Videos in Current Module</div>
+		<ul>
+		{% for v in video.module_id.video_set.all %}
+			{% if v.pk == video.pk %}
+			<li>Part {{v.video_part}}/{{v.module_id.video_count}} <div id="video_meta">[{{v.video_type}}, {{v.video_length}}]</div></li>
+			{% else %}
+			<li><a href="/videos/{{v.url_friendly}}">Part {{v.video_part}}/{{v.module_id.video_count}}</a> <div id="video_meta">[{{v.video_type}}, {{v.video_length}}]</div></li>
+			{% endif %}
+		{%endfor%}
+		</ul>
+	</div>
+</div>
+</fieldset>
+</div>
 {% endif %}
 
 

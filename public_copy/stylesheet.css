@@ -245,11 +245,23 @@ a:hover{color: red;background: rgb(255,255,158);}
 
 /* video detail */
 #main #video_iframe{margin-left:-120px;}
-#main #video_description{font-style:italic; font-size: 12px; text-align: center; margin:auto; margin-top:30px;}
+
+
+
+#main #video_description{font-size: 12px; text-align: center; margin:auto; margin-top:30px;}
+
 #main #video_description fieldset{border: 1px solid grey;}
 #main #video_description legend{font-style:normal;}
+
+#main #youtube_details{font-style:italic;}
+#main #title{text-decoration: underline; margin-top: 10px; font-style:normal;}
+
 #main #video_navigation{text-align: center; margin:auto; margin-top:30px;}
 #video_title{font-size:30px;}
+#main #video_list{margin-top: 10px; font-size:12px; text-align:center;}
+
+#main #video_list ul{list-style-type: none; margin-bottom: 10px;}
+#main #video_list #video_meta {display: inline; font-style: italic;}
 
 /* faq */
 #main .meta .answer{  width: 500px; }
