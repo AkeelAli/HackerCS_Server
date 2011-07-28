@@ -35,7 +35,10 @@ for id in videos:
 		else:
 			rating='null'
 			raters='null'
-		views=entry.statistics.view_count
+		if (entry.statistics):
+			views=entry.statistics.view_count
+		else:
+			views='0'
 		published=entry.published.text
 		description=entry.media.description.text
 		
