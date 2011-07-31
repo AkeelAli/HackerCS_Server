@@ -3,7 +3,14 @@
 	{% block meta_extra %}{% endblock %}
 	
     <title>{% block title %}{% endblock %}</title>
-	{% block fb_meta %}{% endblock %}
+	{% block fb_meta %}
+		<meta property="og:image" content="http://hackercs.com/media/videos/hackercslogo_resizedsquare.png" /> 
+		<meta property="og:title" content="Hacker CS" /> 
+		<meta property="og:type" content="university" /> 
+		<meta property="og:url" content="http://www.hackercs.com/" /> 
+		<meta property="og:description" content="Hacker CS is a free online database of Computer Science video tutorials." /> 
+		<meta property="fb:admins" content="794085611"/>
+	{% endblock %}
 	<link href="/media/videos/stylesheet.css" rel="stylesheet" type="text/css" />
 	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
@@ -83,9 +90,27 @@
 				<p>The goal of Hacker CS is to become the Khan Academy of Computer Science.</b></p> 
 				
 			</div> 
-			
-			<div id="support"> 
-				If you think this is a worthy cause, see how you can <a href="/faq/?pk=1">contribute to Hacker CS</a>.
+
+			<div id="lower"> 
+				<table border="0">
+				<tr>
+				<td>
+				<span id="twitter">
+					<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hackercs.com" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>			
+				</span>
+				</td>
+				<td>
+				<span id="support">
+					If you think this is a worthy cause, see how you can <a href="/faq/?pk=1">contribute to Hacker CS</a>.
+				</span>
+				</td>
+				<td>
+				<span id="fb">
+					<iframe src="http://www.facebook.com/plugins/like.php?app_id=188096441253619&amp;href=hackercs.com&amp;send=false&amp;layout=box_count&amp;width=80&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:65px;" allowTransparency="true"></iframe>
+				</span>
+				</td>
+				</tr>
+				</table>
 			</div>
 		</div>
 	</div>
