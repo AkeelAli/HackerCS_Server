@@ -1,0 +1,12 @@
+<script>
+$(document).ready(function(){
+	if ($("#header").css("text-transform") == "capitalize")
+	{	
+		$(".toggle_container").hide();
+	 
+		$(".name").click(function(){
+			$(this).toggleClass("active").next().slideToggle();
+		});
+	} 
+});
+</script>

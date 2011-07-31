@@ -1,17 +1,7 @@
 {% extends "base.html" %}
 {% block meta_extra %}<META NAME="robots" CONTENT="noindex,follow">{% endblock %}
 {% block script %}
-	<script>
-		$(document).ready(function(){
-			
-			$(".toggle_container").hide();
-		 
-			$(".name").click(function(){
-				$(this).toggleClass("active").next().slideToggle();
-			});
-		 
-		});
-	</script>
+	{% include "videos/toggle_script" %}
 {% endblock %}
 
 {% block title %}Hacker CS - Search Results{% endblock %}
