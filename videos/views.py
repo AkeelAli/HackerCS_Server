@@ -117,3 +117,9 @@ def new(request):
 	modules=modules[:10]
 	
 	return render_to_response('videos/new.html', { 'modules': modules }, context_instance=RequestContext(request))
+
+def random(request):
+	from django.http import HttpResponseRedirect
+	video=Video.objects.filter(video_part=1).order_by('?')[0]
+	url="/videos/"+video.url_friendly()
+	return HttpResponseRedirect(url)
