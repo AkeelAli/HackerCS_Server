@@ -2,7 +2,9 @@
 {%block meta_description%}Hacker CS, Video: {{video.module_title_part}}, Length: {{video.video_length}}{%endblock%}
 {% block title %}Hacker CS - {{video.module_title_part}}{% endblock %}
 {% block content_title %}<div id="video_title">{{video.module_title_part}}</div>{% endblock %}
+{% block script %}
 
+{% endblock %}
 {% block breadcrumbs %}
 	<a href="/">Home</a> >> <a href="/streams/{{back}}">Modules</a> >> Video
 {% endblock %}
@@ -15,7 +17,7 @@
 {% else %}
 
 <div id="video_iframe">
-	<iframe width="853" height="510" src="http://www.youtube.com/embed/{{video.video_youtube_id}}" frameborder="0" allowfullscreen></iframe>
+	<iframe width="853" height="510" src="http://www.youtube.com/embed/{{video.video_youtube_id}}?wmode=opaque" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <div id="video_navigation">
@@ -46,6 +48,20 @@
 	</div>
 </div>
 </fieldset>
+</div>
+
+<div id="sidebar">
+	
+	<a href="http://twitter.com/HackerCS" class="twitter-follow-button">Follow @HackerCS</a>
+	<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+	
+	<iframe src="http://www.youtube.com/subscribe_widget?p=Agilowen"
+
+       style="overflow: hidden; height: 97px; width: 300px; border: 0;"
+
+       scrolling="no" frameBorder="0">
+
+    </iframe>
 </div>
 {% endif %}
 
