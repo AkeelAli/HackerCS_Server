@@ -1,0 +1,3 @@
+http://hackercs.com/accounts/activate/{{activation_key}}
+
+You have {{expiration_days}} days to activate your account.
