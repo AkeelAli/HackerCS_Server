@@ -34,3 +34,20 @@ def faq(request):
 			
 	faq_list=Faq.objects.all().order_by('faq_order')
 	return render_to_response('faq.html',locals())
+
+def GetAuthSubUrl():
+	next = 'http://www.example.com/video_upload.pyc'
+	scope = 'http://gdata.youtube.com'
+	secure = False
+	session = True
+
+def login(request):
+	import gdata.youtube
+	import gdata.youtube.service
+	yt_service = gdata.youtube.service.YouTubeService()
+	yt_service.ssl = True
+	yt_service.developer_key = 'AI39si4w3shgHsc41LIYau0qP_aUnIVaPs5Q5Claz1w2VMrMh9p14QR1Ww'
+	yt_service = gdata.youtube.service.YouTubeService()
+	authSubUrl=yt_service.GenerateAuthSubURL('http://hackercs.com', 'http://gdata.youtube.com', secure=False, session=True)
+	return render_to_response('login.html',{ 'authSubUrl': authSubUrl})
+	

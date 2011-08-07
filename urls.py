@@ -16,6 +16,7 @@ urlpatterns = patterns('',
 		(r'^videos/',include('videos.urls')),
 		(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 		(r'^faq/$','cs.views.faq'),
+		(r'^login/$','cs.views.login'),
 	# Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 	
