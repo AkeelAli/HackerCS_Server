@@ -1,5 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 import re
+
 
 class Tag(models.Model):
 	tag_title=models.CharField(max_length=200)
@@ -132,3 +134,11 @@ class Faq(models.Model):
 
 	def __unicode__(self):
 		return self.faq_question
+
+class UserProfile(models.Model):
+	user=models.ForeignKey(User,unique=True)
+	completed_videos=models.ManyToManyField(Video, blank=True, null=True)
+
+	def get_absolute_url(self):
+		return ('profiles_profile_detail', (), { 'username': self.user.username })
+	get_absolute_url = models.permalink(get_absolute_url)

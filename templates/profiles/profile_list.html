@@ -1,0 +1,10 @@
+{%extends "base.html"%}
+
+{% block content %}
+
+	{% for profile in object_list %}
+		<a href="{{site}}/profiles/{{profile.user}}">{{profile.user}}</a>
+	{% endfor %}
+
+{% endblock %}
+
