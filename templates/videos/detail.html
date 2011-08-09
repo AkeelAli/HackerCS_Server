@@ -30,7 +30,7 @@
 		{% csrf_token %}
 		{% if video_completed %}
 			<input type="hidden" name="action_type" value="mai" />
-			<input type="submit" value="Unmark" />
+			<input class="form_button" type="submit" value="Unmark" />
 		{% else %}
 			<input type="hidden" name="action_type" value="mac" />
 			<input class="form_button" type="submit" value="Mark as Completed" />
