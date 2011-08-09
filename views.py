@@ -2,11 +2,13 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from videos.models import Faq, Stream
 from django.http import Http404
+from django.contrib.auth.models import User
 
 from django.template import RequestContext
 
 def home(request):
 	streams_list=Stream.objects.all()
+	user=request.user
 	return render_to_response('videos/index.html',locals())
 
 def stream_detail(request,stream_url_friendly):

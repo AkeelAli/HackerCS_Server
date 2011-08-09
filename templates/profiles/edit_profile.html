@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% block meta_extra %}<META NAME="robots" CONTENT="noindex,nofollow">{% endblock %}
+
+{% block title %}Hacker CS - Profile{% endblock %}
+
+{% block content_title %}Your Completed Videos{%endblock%}
+
+{% block breadcrumbs %}<a href="/">Home</a> >> Profile{% endblock %}
+
 {% block content %}
 	{% include "profiles/edit_content" %}
 {% endblock %}

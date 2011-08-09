@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
+{% block title %}Hacker CS - Login{% endblock %}
+
 {% block content %}
 
 {% if user.is_authenticated %}
 	<meta http-equiv="REFRESH" content="0;url=http://hackercs.com/users/edit">
 {% else %}
+	<div id="login_register">
 	{% include 'registration/registration_content' %}
+	</div>
 {% endif %}
 
 {% endblock %}

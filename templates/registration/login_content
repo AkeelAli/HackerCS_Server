@@ -1,17 +1,17 @@
 <h1>Login</h1>
 {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
+<div class="errorlist">Your username and password didn't match. Please try again.</div>
 {% endif %}
 
 <form method="post" action="{% url django.contrib.auth.views.login %}">
 	{% csrf_token %}
 	<table>
 	<tr>
-		<td>{{ form.username.label_tag }}</td>
+		<td>{{ form.username.label_tag }}:</td>
 		<td>{{ form.username }}</td>
 	</tr>
 	<tr>
-		<td>{{ form.password.label_tag }}</td>
+		<td>{{ form.password.label_tag }}:</td>
 		<td>{{ form.password }}</td>
 	</tr>
 	</table>
@@ -26,7 +26,7 @@
  
 <h1>Create Account</h1>
 
-<form action="/accounts/register/" method="post">
+<form action="{% url registration_register %}" method="post">
 	{% csrf_token %}
 	<p><label for="id_username">username:</label> <input id="id_username" type="text" class="required" name="username" maxlength="30" /></p> 
 	<p><label for="id_email">email address:</label> <input id="id_email" type="text" class="required" name="email" maxlength="75" /></p> 

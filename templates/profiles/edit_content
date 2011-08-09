@@ -1,10 +1,13 @@
-{% if form.is_multipart %}
-	<form enctype="multipart/form-data" method="post" action="">
-{% else %}
-	<form method="post" action="">
-{% endif %}
-	{% csrf_token %}
-	{{ form.as_p }}
-	<input type="submit" value="Save" />
-</form>
+<div id="profile_content">
+	{% if form.is_multipart %}
+		<form enctype="multipart/form-data" method="post" action="">
+	{% else %}
+		<form method="post" action="">
+	{% endif %}
+		{% csrf_token %}
+		{{ form.as_p }}
+		<div class="helptext">Don't modify this list directly unless you know what you're doing. Watch more videos and mark them as complete to update this list.</div>
+		<input type="submit" value="Save Changes" />
+	</form>
+</div>
 

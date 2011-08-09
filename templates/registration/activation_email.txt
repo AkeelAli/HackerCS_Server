@@ -1,3 +1,3 @@
-http://hackercs.com/accounts/activate/{{activation_key}}
+Welcome to Hacker CS!
 
-You have {{expiration_days}} days to activate your account.
+Please click on the following link to activate your account: http://hackercs.com/accounts/activate/{{activation_key}}

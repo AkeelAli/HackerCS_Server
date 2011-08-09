@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}{%endblock%}
+{% block meta_extra %}<META NAME="robots" CONTENT="noindex,nofollow">{% endblock %}
+
+{% block title %}Hacker CS - Logout{% endblock %}
+
+{% block content_title %}Logout{%endblock%}
+
+{% block breadcrumbs %}<a href="/">Home</a> >> Logout{% endblock %}
 
 {%block content %}
-You've been logged out
+<p>You've been logged out.</p>
+<meta http-equiv="REFRESH" content="0;url=http://hackercs.com/">
 {%endblock%}

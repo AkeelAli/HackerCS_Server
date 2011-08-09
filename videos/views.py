@@ -1,12 +1,16 @@
 from django.shortcuts import render_to_response
-from videos.models import Stream, Video, Association, Module
+from videos.models import Stream, Video, Association, Module, UserProfile
 from django.http import Http404
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 #send info about request object to template so it can use csrf token
 from django.template import RequestContext
 
 def index(request):
 	streams_list=Stream.objects.all()
+	user=request.user
 	return render_to_response('videos/index.html',locals())
 	
 def detail(request,video_url_friendly):
@@ -22,6 +26,15 @@ def detail(request,video_url_friendly):
 			raise Http404
 	except Video.DoesNotExist:
 		raise Http404
+	
+	#marking
+	videos_completed=[]
+	video_completed=False
+	if request.user.is_authenticated():
+		videos_completed=request.user.userprofile_set.all()[0].completed_videos.all()
+		if (video in videos_completed):
+			video_completed=True
+	
 	
 	back=video.module_id.association_set.all()[0].association_stream_id.url_friendly()
 	
@@ -123,3 +136,31 @@ def random(request):
 	video=Video.objects.filter(video_part=1).order_by('?')[0]
 	url="/videos/"+video.url_friendly()
 	return HttpResponseRedirect(url)
+	
+@login_required
+def mark(request):
+	if request.user.is_authenticated():
+		profile=request.user.userprofile_set.all()[0]
+		action_type=""
+		pk_to_mark=""
+		url=""
+		
+		#mac mai
+		if ('action_type' in request.POST) and request.POST['action_type'].strip():
+			action_type = request.POST['action_type']
+
+		if ('video' in request.POST) and request.POST['video'].strip():
+			pk_to_mark = request.POST['video']
+		
+		if (action_type!="" and pk_to_mark!=""):
+			video=Video.objects.get(pk=int(pk_to_mark))
+			url=video.url_friendly()
+			if (action_type=="mac"):
+				profile.completed_videos.add(video)
+			if (action_type=="mai"):
+				profile.completed_videos.remove(video)
+		return HttpResponseRedirect("/videos/"+url)
+	
+	else:
+	# Do something for anonymous users.
+		pass
