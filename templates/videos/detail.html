@@ -20,8 +20,13 @@
 	<iframe width="853" height="510" src="http://www.youtube.com/embed/{{video.video_youtube_id}}?wmode=opaque" frameborder="0" allowfullscreen></iframe>
 </div>
 
+<a name="interact_anchor"></a>
 <div id="interact">
-	<form action="/videos/mark/" method="post">
+	{% if user.is_authenticated %}
+		<form action="/videos/mark/" method="post">
+	{% else %}
+		<form action="/videos/mark/{{video.pk}}" method="post">
+	{% endif %}
 		{% csrf_token %}
 		{% if video_completed %}
 			<input type="hidden" name="action_type" value="mai" />

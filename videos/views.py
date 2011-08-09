@@ -138,12 +138,15 @@ def random(request):
 	return HttpResponseRedirect(url)
 	
 @login_required
-def mark(request):
+def mark(request,video_pk=None):
 	if request.user.is_authenticated():
 		profile=request.user.userprofile_set.all()[0]
 		action_type=""
 		pk_to_mark=""
 		url=""
+		
+		if (not video_pk is None and video_pk!=''):
+			url=Video.objects.get(pk=int(video_pk)).url_friendly()+"#interact_anchor"
 		
 		#mac mai
 		if ('action_type' in request.POST) and request.POST['action_type'].strip():
