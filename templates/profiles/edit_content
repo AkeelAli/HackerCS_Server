@@ -1,4 +1,6 @@
 <div id="profile_content">
+		<p><b>Username:</b> {{profile.user.username}}</p>
+		<br />
 	{% if form.is_multipart %}
 		<form enctype="multipart/form-data" method="post" action="">
 	{% else %}
