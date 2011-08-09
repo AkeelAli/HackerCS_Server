@@ -13,7 +13,9 @@ def home(request):
 
 def stream_detail(request,stream_url_friendly):
 	user=request.user
-	completed_videos=user.userprofile_set.all()[0].completed_videos.all()
+	if (user.is_authenticated()):
+		completed_videos=user.userprofile_set.all()[0].completed_videos.all()
+		
 	try:
 		stream=False
 		streams=Stream.objects.all()
