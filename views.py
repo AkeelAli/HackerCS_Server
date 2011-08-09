@@ -12,6 +12,8 @@ def home(request):
 	return render_to_response('videos/index.html',locals())
 
 def stream_detail(request,stream_url_friendly):
+	user=request.user
+	completed_videos=user.userprofile_set.all()[0].completed_videos.all()
 	try:
 		stream=False
 		streams=Stream.objects.all()
