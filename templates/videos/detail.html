@@ -33,7 +33,7 @@
 			<input class="form_button" type="submit" value="Unmark" />
 		{% else %}
 			<input type="hidden" name="action_type" value="mac" />
-			<input class="form_button" type="submit" value="Mark as Completed" />
+			<input title="Mark this video as completed in your profile" class="form_button" type="submit" value="Mark as Completed" />
 		{% endif %}
 		<input type="hidden" name="video" value="{{video.pk}}" />
 	</form>

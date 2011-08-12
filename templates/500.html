@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Hacker CS - Server Error{% endblock %}
+
+{% block content_title %}Error{% endblock %}
+
+{% block breadcrumbs %}
+	<a href="/">Home</a> >> 500
+{% endblock %}
+
+{% block content %}
+
+	<div id="flash_notice">Oops. Something went wrong. We'd love to hear from you on how you got here. You can use the "Send Feedback" link on the left or email us at <script type="text/javascript">eval(decodeURIComponent('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%27%3c%61%20%68%72%65%66%3d%5c%22%6d%61%69%6c%74%6f%3a%69%6e%66%6f%40%68%61%63%6b%65%72%63%73%2e%63%6f%6d%5c%22%3e%69%6e%66%6f%40%68%61%63%6b%65%72%63%73%2e%63%6f%6d%3c%5c%2f%61%3e%27%29%3b'))</script>.</div>
+<br />
+<p>If this problem occurs while you are logged in, you can try visiting <a href="http://hackercs.com/users/create/">your profile</a> and clicking on "Save Changes".</p>
+
+
+{% endblock %}
