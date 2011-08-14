@@ -30,8 +30,10 @@ def detail(request,video_url_friendly):
 	#marking
 	videos_completed=[]
 	video_completed=False
+	profile=None
 	if request.user.is_authenticated():
-		videos_completed=request.user.userprofile_set.all()[0].completed_videos.all()
+		profile=request.user.userprofile_set.all()[0]
+		videos_completed=profile.completed_videos.all()
 		if (video in videos_completed):
 			video_completed=True
 	

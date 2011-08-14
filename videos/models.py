@@ -138,6 +138,12 @@ class Faq(models.Model):
 class UserProfile(models.Model):
 	user=models.ForeignKey(User,unique=True)
 	completed_videos=models.ManyToManyField(Video, blank=True, null=True)
+	
+	FORMAT_CHOICES=(
+		('H','HTML5'),
+		('F','FLASH'),
+	)
+	format=models.CharField(max_length=1,choices=FORMAT_CHOICES,default='F')
 
 	def get_absolute_url(self):
 		return ('profiles_profile_detail', (), { 'username': self.user.username })
