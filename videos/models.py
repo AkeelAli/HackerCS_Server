@@ -108,18 +108,37 @@ class Video(models.Model):
 
 	def next_video_in_stream(self):
 		module=self.module_id
-		#even though for loop, current assumptions is that there is only 1 association per module
-		for association in module.association_set.all():
-			stream=association.association_stream_id
-			stream_parts=stream.module_count()
-			module_part=association.association_part
-			if (module_part<stream_parts):
-				l=[stream,module_part+1]
-				return l
-			else:
-				return False
+		#current assumption is that there is only 1 association per module
+		association=module.association_set.all()[0]
 		
-		return False
+		stream=association.association_stream_id
+		stream_parts=stream.module_count()
+		module_part=association.association_part
+				
+		#find next_module having a video
+		current_association_part=module_part #decimal of the association
+		next_association_having_video=None
+		while(next_association_having_video is None):
+			query='SELECT * FROM videos_association WHERE association_part>%s ORDER BY association_part ASC' % current_association_part
+			try:
+				next_association=Association.objects.raw(query)[0]
+				
+				if (next_association.association_module_id.video_count()>0):
+					next_association_having_video=next_association
+				else:
+					#current assumption is that there is only 1 association per module
+					current_association_part=next_association.association_part
+			except:
+				#if we get an index out of range in query, this means the query result is empty (end of stream)
+				next_association_having_video=False
+
+		if (next_association_having_video):
+			#preserve this way of returning from legacy
+			l=[stream,next_association_having_video.association_part]
+		else:
+			l=False
+
+		return l
 		
 	def video_tags(self):
 		tags=[]
