@@ -50,8 +50,11 @@ def detail(request,video_url_friendly):
 	if not next_video:
 		stream_module=video.next_video_in_stream()
 		if (stream_module):
-			next_association=Association.objects.filter(association_stream_id=stream_module[0],association_part=stream_module[1])[0]
-			next_video=next_association.association_module_id.video_set.all()[0].url_friendly()
+			try: #added temporarily (there seems to be an issue with linked-list 2 only)
+				next_association=Association.objects.filter(association_stream_id=stream_module[0],association_part=stream_module[1])[0]
+				next_video=next_association.association_module_id.video_set.all()[0].url_friendly()
+			except:
+				pass
 				
 	if (video.video_part>1):
 		try:
