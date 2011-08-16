@@ -81,8 +81,8 @@ def top(request):
 	
 	for module in Module.objects.all():
 		if (module.module_rating):
-			#score=float(module.module_rating)*int(module.module_raters)*len(module.video_set.all())/(int(module.module_views))
-			score=float(module.module_rating)*int(module.module_raters)
+			score=float(module.module_rating)*int(module.module_raters)/(int(module.module_views))
+			#score=float(module.module_rating)*int(module.module_raters)
 			entries.append((module,score))
 	
 	if (entries):
