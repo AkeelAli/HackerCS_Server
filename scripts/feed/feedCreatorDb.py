@@ -60,7 +60,7 @@ for row in rows:
 	<guid isPermaLink="true">%s</guid>
 	<pubDate>%s</pubDate>
 	</item>
-	""" % (video.module_id.module_title,row[2],link,link, format_date(published))
+	""" % (video.module_id.module_title,video.module_id.module_description,link,link, format_date(published))
 
 	body+=item
 
