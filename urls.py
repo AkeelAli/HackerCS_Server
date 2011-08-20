@@ -22,6 +22,19 @@ urlpatterns = patterns('',
 	#custom registration form that creates profile
 	url(r'^login/$',register,{'form_class' : CustomRegistrationForm},name='registration_register'),
 		(r'^accounts/', include('registration.urls')),
+		
+	#django password reset
+		(r'^accounts/password/reset/$', 'django.contrib.auth.views.password_reset', 
+        {'post_reset_redirect' : '/accounts/password/reset/done/'}),
+		(r'^accounts/password/reset/done/$', 'django.contrib.auth.views.password_reset_done'),
+		(r'^accounts/password/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', 
+        {'post_reset_redirect' : '/accounts/password/done/'}),
+		(r'^accounts/password/done/$', 'django.contrib.auth.views.password_reset_complete'),
+
+	#password change
+		(r'^accounts/password/change/$','django.contrib.auth.views.password_change',{'post_change_redirect' : '/accounts/password/change/done/'}),
+		(r'^accounts/password/change/done/$','django.contrib.auth.views.password_change_done'),
+		
 		(r'^users/',include('users.urls')),
 	# Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),

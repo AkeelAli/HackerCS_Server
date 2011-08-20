@@ -22,6 +22,7 @@
 	{% else %}
 		<input type="hidden" name="next" value="/users/edit/" />
 	{% endif %}
+		&nbsp;<a style="font-size: 10px;" href="http://hackercs.com/accounts/password/reset/">Forgot my username/password</a>
 </form>
  
 <h1>Create Account</h1>
